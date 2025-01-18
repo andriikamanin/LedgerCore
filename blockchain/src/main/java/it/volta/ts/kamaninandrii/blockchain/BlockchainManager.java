@@ -45,7 +45,6 @@ public class BlockchainManager {
         return users;
     }
 
-    // Метод для создания блока
     public void createBlock() {
         if (pendingTransactions.size() < MAX_TRANSACTIONS) {
             System.out.println("Недостаточно транзакций для создания блока.");
@@ -71,11 +70,41 @@ public class BlockchainManager {
         // Добавляем новый блок в блокчейн
         blockchain.addBlock(newBlock);
 
+        // Обновляем балансы пользователей, учитывая все транзакции в блоке
+        for (Transaction transaction : newBlock.getTransactions()) {
+            updateBalance(transaction);
+        }
+
         // Очистка пула транзакций после добавления блока
         pendingTransactions.clear();
 
         System.out.println("Новый блок создан с " + newBlock.getTransactions().size() + " транзакциями.");
     }
+
+
+
+    // Метод для обновления баланса пользователей
+    private void updateBalance(Transaction transaction) {
+        String sender = transaction.getSender();
+        String receiver = transaction.getReceiver();
+        double amount = transaction.getAmount();
+
+        // Вычитаем сумму у отправителя
+        if (users.containsKey(sender)) {
+            User senderUser = users.get(sender);
+            senderUser.setBalance(senderUser.getBalance() - amount);
+        }
+
+        // Добавляем сумму получателю
+        if (users.containsKey(receiver)) {
+            User receiverUser = users.get(receiver);
+            receiverUser.setBalance(receiverUser.getBalance() + amount);
+        }
+
+        System.out.println("Баланс обновлен: " + sender + " -> " + receiver);
+    }
+
+
 
     // Метод для добавления транзакции
     public void addTransaction(Transaction transaction) {
