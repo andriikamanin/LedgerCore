@@ -1,126 +1,176 @@
 package it.volta.ts.kamaninandrii.blockchain;
 
-
+import it.volta.ts.kamaninandrii.blockchain.bean.Block;
+import it.volta.ts.kamaninandrii.blockchain.bean.Transaction;
+import it.volta.ts.kamaninandrii.blockchain.bean.User;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
+
+@Service
+@Scope("singleton")
 public class BlockchainManager {
-    private Blockchain blockchain;
-    private ArrayList<Transaction> pendingTransactions; // Список неподтвержденных транзакций
-    private HashMap<String, Double> balances;           // Балансы пользователей
+    private final Blockchain blockchain;
+    private final ArrayList<Transaction> pendingTransactions;
+    private final HashMap<String, User> users;
+    private final int MAX_TRANSACTIONS = 10; // Настраиваемый лимит транзакций в блоке
 
     public BlockchainManager() {
-        blockchain = new Blockchain();                 // Инициализация блокчейна
-        pendingTransactions = new ArrayList<>();       // Инициализация пула транзакций
-        balances = new HashMap<>();                    // Инициализация балансов
+        blockchain = new Blockchain();
+        pendingTransactions = new ArrayList<>();
+        users = new HashMap<>();
+        users.put("system", new User("system", 100000.0));
     }
 
-    /**
-     * Регистрирует новую транзакцию в пуле.
-     *
-     * @param sender   Отправитель.
-     * @param receiver Получатель.
-     * @param amount   Сумма перевода.
-     * @return true, если транзакция успешно добавлена.
-     */
-    public boolean addTransaction(String sender, String receiver, double amount) {
-        // Проверка, хватает ли средств у отправителя
-        if (!balances.containsKey(sender) || balances.get(sender) < amount) {
-            System.out.println("Ошибка: недостаточно средств у отправителя " + sender);
-            return false;
+    public void createUser(String address) {
+        if (!users.containsKey(address)) {
+            users.put(address, new User(address, 0.0));
+            System.out.println("Пользователь " + address + " создан.");
+        } else {
+            System.out.println("Пользователь с таким адресом уже существует.");
         }
-        // Создание и добавление транзакции
-        Transaction transaction = new Transaction(sender, receiver, amount);
-        pendingTransactions.add(transaction);
-        System.out.println("Транзакция добавлена: " + transaction);
-        return true;
+        System.out.println("Текущие пользователи: " + users.keySet());
     }
 
-    /**
-     * Создает новый блок с текущими транзакциями и добавляет его в блокчейн.
-     */
+    public User getUser(String address) {
+        return users.get(address);
+    }
+
+    public Map<String, User> getAllUsers() {
+        return users;
+    }
+
     public void createBlock() {
         if (pendingTransactions.isEmpty()) {
             System.out.println("Нет неподтвержденных транзакций для включения в блок.");
             return;
         }
 
-        // Создаем новый блок
+        // Получаем последний блок из блокчейна
         Block lastBlock = blockchain.getLastBlock();
+
+        // Создаем новый блок
         Block newBlock = new Block(
-                lastBlock != null ? lastBlock.getIndex() + 1 : 1,
+                lastBlock != null ? lastBlock.getIndex() + 1 : 0,
                 lastBlock != null ? lastBlock.getHash() : "0"
         );
 
         // Добавляем все неподтвержденные транзакции в блок
         for (Transaction transaction : pendingTransactions) {
-            newBlock.addTransaction(transaction);
-            // Обновляем балансы
-            processTransaction(transaction);
+            newBlock.addTransaction(transaction); // Добавляем транзакции
         }
 
-        // Очищаем пул транзакций
+        // Очищаем пул неподтвержденных транзакций
         pendingTransactions.clear();
 
-        // Добавляем блок в блокчейн
+        // Добавляем блок в цепочку
         blockchain.addBlock(newBlock);
+
         System.out.println("Создан и добавлен новый блок: " + newBlock);
     }
 
-    /**
-     * Просматривает баланс конкретного пользователя.
-     *
-     * @param user Имя пользователя.
-     * @return Баланс пользователя.
-     */
-    public double getBalance(String user) {
-        return balances.getOrDefault(user, 0.0);
-    }
+    public void addTransactionToBlock(String senderAddress, String receiverAddress, double amount) {
+        User sender = users.get(senderAddress);
+        if (sender == null || sender.getBalance() < amount) {
+            System.out.println("Ошибка: недостаточно средств или пользователь не найден.");
+            return;
+        }
 
-    /**
-     * Выводит текущее состояние блокчейна.
-     */
-    public void printBlockchain() {
-        System.out.println("Текущее состояние блокчейна:");
-        System.out.println(blockchain);
-    }
+        Transaction transaction = new Transaction(senderAddress, receiverAddress, amount);
+        pendingTransactions.add(transaction);
 
-    /**
-     * Проверяет валидность цепочки блоков.
-     *
-     * @return true, если цепочка валидна, иначе false.
-     */
-    public boolean isBlockchainValid() {
-        return blockchain.isValid();
-    }
-
-    /**
-     * Выводит все текущие неподтвержденные транзакции.
-     */
-    public void printPendingTransactions() {
-        System.out.println("Неподтвержденные транзакции:");
-        for (Transaction transaction : pendingTransactions) {
-            System.out.println(transaction);
+        if (pendingTransactions.size() >= MAX_TRANSACTIONS) {
+            createBlock();
         }
     }
 
-    // ===== Вспомогательные методы =====
-
-    /**
-     * Обрабатывает транзакцию, обновляя балансы пользователей.
-     *
-     * @param transaction Транзакция для обработки.
-     */
-    private void processTransaction(Transaction transaction) {
+    public void processTransaction(Transaction transaction) {
         String sender = transaction.getSender();
         String receiver = transaction.getReceiver();
         double amount = transaction.getAmount();
 
-        // Списываем у отправителя
-        balances.put(sender, balances.getOrDefault(sender, 0.0) - amount);
+        User senderUser = users.get(sender);
+        User receiverUser = users.get(receiver);
 
-        // Добавляем получателю
-        balances.put(receiver, balances.getOrDefault(receiver, 0.0) + amount);
+        if (senderUser == null || receiverUser == null) {
+            System.out.println("Ошибка: один из пользователей не существует.");
+            return;
+        }
+
+        if (senderUser.getBalance() < amount) {
+            System.out.println("Ошибка: недостаточно средств.");
+            return;
+        }
+
+        senderUser.subtractBalance(amount);
+        receiverUser.addBalance(amount);
+
+        System.out.println("Транзакция успешна: " + sender + " отправил " + amount + " получателю " + receiver);
+    }
+
+    public double getBalance(String user) {
+        User u = users.get(user);
+        return u != null ? u.getBalance() : 0.0;
+    }
+
+    public double getBalanceWithPending(String user) {
+        double balance = getBalance(user);
+        for (Transaction transaction : pendingTransactions) {
+            if (transaction.getSender().equals(user)) {
+                balance -= transaction.getAmount();
+            }
+            if (transaction.getReceiver().equals(user)) {
+                balance += transaction.getAmount();
+            }
+        }
+        return balance;
+    }
+
+    public boolean isBlockchainValid() {
+        return blockchain.isValid();
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Баланс пользователей:\n");
+        for (Map.Entry<String, User> entry : users.entrySet()) {
+            sb.append(entry.getKey()).append(": ").append(entry.getValue().getBalance()).append("\n");
+        }
+
+        sb.append("\nНеподтвержденные транзакции:\n");
+        for (Transaction transaction : pendingTransactions) {
+            sb.append(transaction).append("\n");
+        }
+
+        sb.append("\nИнформация о блоках:\n");
+        /*for (Block block : blockchain.getChain()) {
+            sb.append(block).append("\n");
+        }*/
+
+        sb.append(getAllBlocks()).append("\n");
+
+        return sb.toString();
+    }
+
+    public String getAllBlocks() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Информация о блоках:\n");
+        for (Block block : blockchain.getChain()) { // Проходим по каждому блоку в цепочке
+            sb.append("Блок ").append(block.getIndex()).append(":\n");
+
+            sb.append("Previous Hash: ").append(block.getPreviousHash()).append("\n");
+            sb.append("Hash: ").append(block.getHash()).append("\n");
+            sb.append("Транзакции:\n");
+            for (Transaction transaction : block.getTransactions()) { // Проходим по каждой транзакции в блоке
+                sb.append(transaction).append("\n");
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 }

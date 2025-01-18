@@ -1,4 +1,4 @@
-package it.volta.ts.kamaninandrii.blockchain;
+package it.volta.ts.kamaninandrii.blockchain.bean;
 
 import java.util.Date;
 
@@ -6,25 +6,14 @@ public class Transaction {
     private String sender;
     private String receiver;
     private double amount;
-    private long timestamp;
 
     public Transaction(String sender, String receiver, double amount) {
         this.sender = sender;
         this.receiver = receiver;
         this.amount = amount;
-        this.timestamp = new Date().getTime();
     }
 
-    @Override
-    public String toString() {
-        return "Transaction{" +
-                "sender='" + sender + '\'' +
-                ", receiver='" + receiver + '\'' +
-                ", amount=" + amount +
-                ", timestamp=" + timestamp +
-                '}';
-    }
-
+    // Геттеры и сеттеры
     public String getSender() {
         return sender;
     }
@@ -37,7 +26,8 @@ public class Transaction {
         return amount;
     }
 
-    public long getTimestamp() {
-        return timestamp;
+    @Override
+    public String toString() {
+        return "Transaction{sender='" + sender + "', receiver='" + receiver + "', amount=" + amount + "}";
     }
 }

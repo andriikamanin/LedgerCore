@@ -1,4 +1,4 @@
-package it.volta.ts.kamaninandrii.blockchain;
+package it.volta.ts.kamaninandrii.blockchain.bean;
 
 import it.volta.ts.kamaninandrii.blockchain.util.HashUtil;
 
@@ -21,7 +21,12 @@ public class Block {
     }
 
     public void addTransaction(Transaction transaction) {
-        transactions.add(transaction);
+        if (transaction != null) {
+            transactions.add(transaction);
+            System.out.println("Транзакция добавлена в блок: " + transaction);
+        } else {
+            System.out.println("Ошибка: транзакция не может быть null.");
+        }
     }
 
     public String calculateHash() {
@@ -38,6 +43,10 @@ public class Block {
 
     public String getPreviousHash() {
         return previousHash;
+    }
+
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
     }
 
     @Override
