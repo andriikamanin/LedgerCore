@@ -17,13 +17,14 @@ public class BlockchainManager {
     private final Blockchain blockchain;
     private final ArrayList<Transaction> pendingTransactions;
     private final HashMap<String, User> users;
-    private final int MAX_TRANSACTIONS = 10; // Настраиваемый лимит транзакций в блоке
+    private final int MAX_TRANSACTIONS = 5; // Настраиваемый лимит транзакций в блоке
+    private static final double miningReward = 50.0;
 
     public BlockchainManager() {
         blockchain = new Blockchain();
         pendingTransactions = new ArrayList<>();
         users = new HashMap<>();
-        users.put("system", new User("system", 100000.0));
+        users.put("system", new User("system", 100000.0));  // Пользователь "system" с большим балансом для транзакций
     }
 
     public void createUser(String address) {
@@ -44,72 +45,79 @@ public class BlockchainManager {
         return users;
     }
 
+    // Метод для создания блока
     public void createBlock() {
-        if (pendingTransactions.isEmpty()) {
-            System.out.println("Нет неподтвержденных транзакций для включения в блок.");
+        if (pendingTransactions.size() < MAX_TRANSACTIONS) {
+            System.out.println("Недостаточно транзакций для создания блока.");
             return;
         }
 
-        // Получаем последний блок из блокчейна
         Block lastBlock = blockchain.getLastBlock();
 
         // Создаем новый блок
         Block newBlock = new Block(
-                lastBlock != null ? lastBlock.getIndex() + 1 : 0,
-                lastBlock != null ? lastBlock.getHash() : "0"
+                lastBlock != null ? lastBlock.getIndex() + 1 : 0,  // Индекс нового блока
+                lastBlock != null ? lastBlock.getHash() : "0",     // Хеш предыдущего блока
+                new ArrayList<>(pendingTransactions)               // Список транзакций для нового блока
         );
 
-        // Добавляем все неподтвержденные транзакции в блок
-        for (Transaction transaction : pendingTransactions) {
-            newBlock.addTransaction(transaction); // Добавляем транзакции
-        }
+        // Добавляем транзакцию майнинга (вознаграждение)
+        Transaction miningTransaction = new Transaction("system", "miner", miningReward);
+        newBlock.getTransactions().add(miningTransaction);
 
-        // Очищаем пул неподтвержденных транзакций
-        pendingTransactions.clear();
+        // Пересчитываем хеш блока после добавления всех транзакций
+        newBlock.setHash(newBlock.calculateHash());
 
-        // Добавляем блок в цепочку
+        // Добавляем новый блок в блокчейн
         blockchain.addBlock(newBlock);
 
-        System.out.println("Создан и добавлен новый блок: " + newBlock);
+        // Очистка пула транзакций после добавления блока
+        pendingTransactions.clear();
+
+        System.out.println("Новый блок создан с " + newBlock.getTransactions().size() + " транзакциями.");
     }
 
-    public void addTransactionToBlock(String senderAddress, String receiverAddress, double amount) {
-        User sender = users.get(senderAddress);
-        if (sender == null || sender.getBalance() < amount) {
-            System.out.println("Ошибка: недостаточно средств или пользователь не найден.");
-            return;
-        }
-
-        Transaction transaction = new Transaction(senderAddress, receiverAddress, amount);
+    // Метод для добавления транзакции
+    public void addTransaction(Transaction transaction) {
         pendingTransactions.add(transaction);
+        System.out.println("Добавлена транзакция: " + transaction);
+        System.out.println("Текущее количество неподтвержденных транзакций: " + pendingTransactions.size());
 
+        // Если количество транзакций достигло лимита, создается новый блок
         if (pendingTransactions.size() >= MAX_TRANSACTIONS) {
+            System.out.println("Лимит транзакций достигнут. Создается новый блок...");
             createBlock();
         }
     }
 
+    // Обработка транзакции
     public void processTransaction(Transaction transaction) {
         String sender = transaction.getSender();
         String receiver = transaction.getReceiver();
         double amount = transaction.getAmount();
 
-        User senderUser = users.get(sender);
-        User receiverUser = users.get(receiver);
-
-        if (senderUser == null || receiverUser == null) {
+        if (!users.containsKey(sender) || !users.containsKey(receiver)) {
             System.out.println("Ошибка: один из пользователей не существует.");
             return;
         }
 
-        if (senderUser.getBalance() < amount) {
-            System.out.println("Ошибка: недостаточно средств.");
+        if (getBalanceWithPending(sender) < amount) {
+            System.out.println("Ошибка: недостаточно средств (учитывая неподтвержденные транзакции).");
             return;
         }
 
-        senderUser.subtractBalance(amount);
-        receiverUser.addBalance(amount);
+        addTransactionToPending(transaction); // Добавляем транзакцию в пул
+        System.out.println("Транзакция добавлена в пул неподтвержденных транзакций.");
 
-        System.out.println("Транзакция успешна: " + sender + " отправил " + amount + " получателю " + receiver);
+    }
+
+    public void addTransactionToPending(Transaction transaction) {
+        if (transaction != null) {
+            pendingTransactions.add(transaction);
+            System.out.println("Транзакция добавлена в пул неподтвержденных: " + transaction);
+        } else {
+            System.out.println("Ошибка: передана пустая транзакция!");
+        }
     }
 
     public double getBalance(String user) {
@@ -117,6 +125,7 @@ public class BlockchainManager {
         return u != null ? u.getBalance() : 0.0;
     }
 
+    // Метод для расчета баланса пользователя, учитывая неподтвержденные транзакции
     public double getBalanceWithPending(String user) {
         double balance = getBalance(user);
         for (Transaction transaction : pendingTransactions) {
@@ -134,6 +143,7 @@ public class BlockchainManager {
         return blockchain.isValid();
     }
 
+    // Метод для вывода состояния блокчейна
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
@@ -148,15 +158,12 @@ public class BlockchainManager {
         }
 
         sb.append("\nИнформация о блоках:\n");
-        /*for (Block block : blockchain.getChain()) {
-            sb.append(block).append("\n");
-        }*/
-
         sb.append(getAllBlocks()).append("\n");
 
         return sb.toString();
     }
 
+    // Метод для получения информации о всех блоках
     public String getAllBlocks() {
         StringBuilder sb = new StringBuilder();
         sb.append("Информация о блоках:\n");

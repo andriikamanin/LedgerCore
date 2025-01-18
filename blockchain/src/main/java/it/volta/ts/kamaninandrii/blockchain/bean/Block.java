@@ -12,10 +12,11 @@ public class Block {
     private String previousHash;
     private String hash;
 
-    public Block(int index, String previousHash) {
+    // Обновленный конструктор, который принимает список транзакций
+    public Block(int index, String previousHash, ArrayList<Transaction> transactions) {
         this.index = index;
         this.timestamp = new Date().getTime();
-        this.transactions = new ArrayList<>();
+        this.transactions = transactions != null ? transactions : new ArrayList<>();
         this.previousHash = previousHash;
         this.hash = calculateHash();
     }
@@ -37,6 +38,11 @@ public class Block {
     public String getHash() {
         return hash;
     }
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
+
+
     public int getIndex() {
         return index;
     }

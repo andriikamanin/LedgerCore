@@ -53,10 +53,13 @@ public class ApiController {
 
     // Пополнение баланса
     @PostMapping("/deposit")
-    public String deposit(@RequestBody DepositRequest depositRequest) {
-        return blockchainService.deposit(depositRequest.getUser(), depositRequest.getAmount());
+    public String deposit(@RequestBody TransactionRequest transactionRequest) {
+        return blockchainService.transfer(
+                transactionRequest.getSender(),
+                transactionRequest.getReceiver(),
+                transactionRequest.getAmount()
+        );
     }
-
 
     // Создание нового пользователя
     @PostMapping("/createUser")

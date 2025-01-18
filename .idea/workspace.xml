@@ -5,26 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa8777d5-83d4-4ffa-8a41-746a79f5246a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/it/volta/ts/kamaninandrii/blockchaincore/ApiApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/it/volta/ts/kamaninandrii/blockchaincore/controller/ApiController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/it/volta/ts/kamaninandrii/blockchaincore/service/BlockchainService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/it/volta/ts/kamaninandrii/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/it/volta/ts/kamaninandrii/blockchain/Block.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/it/volta/ts/kamaninandrii/blockchain/Blockchain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/it/volta/ts/kamaninandrii/blockchain/Transaction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/it/volta/ts/kamaninandrii/blockchain/util/HashUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/it/volta/ts/kamaninandrii/blockchaincore/ApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/it/volta/ts/kamaninandrii/blockchaincore/ApiApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/it/volta/ts/kamaninandrii/blockchaincore/controller/ApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/it/volta/ts/kamaninandrii/blockchaincore/controller/ApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/it/volta/ts/kamaninandrii/blockchaincore/service/BlockchainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/it/volta/ts/kamaninandrii/blockchaincore/service/BlockchainService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain/build/classes/java/main/it/volta/ts/kamaninandrii/blockchain/Blockchain.class" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/build/classes/java/main/it/volta/ts/kamaninandrii/blockchain/Blockchain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain/build/classes/java/main/it/volta/ts/kamaninandrii/blockchain/BlockchainManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/build/classes/java/main/it/volta/ts/kamaninandrii/blockchain/BlockchainManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain/build/classes/java/main/it/volta/ts/kamaninandrii/blockchain/bean/Block.class" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/build/classes/java/main/it/volta/ts/kamaninandrii/blockchain/bean/Block.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain/build/classes/java/main/it/volta/ts/kamaninandrii/blockchain/util/HashUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/build/classes/java/main/it/volta/ts/kamaninandrii/blockchain/util/HashUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain/build/libs/blockchain-0.0.1-SNAPSHOT-plain.jar" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/build/libs/blockchain-0.0.1-SNAPSHOT-plain.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain/build/tmp/compileJava/compileTransaction/stash-dir/BlockchainManager.class.uniqueId0" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/build/tmp/compileJava/compileTransaction/stash-dir/BlockchainManager.class.uniqueId0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain/src/main/java/it/volta/ts/kamaninandrii/blockchain/Blockchain.java" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/src/main/java/it/volta/ts/kamaninandrii/blockchain/Blockchain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain/src/main/java/it/volta/ts/kamaninandrii/blockchain/BlockchainManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/src/main/java/it/volta/ts/kamaninandrii/blockchain/BlockchainManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain/src/main/java/it/volta/ts/kamaninandrii/blockchain/bean/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/src/main/java/it/volta/ts/kamaninandrii/blockchain/bean/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain/src/main/java/it/volta/ts/kamaninandrii/blockchain/util/HashUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/src/main/java/it/volta/ts/kamaninandrii/blockchain/util/HashUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +67,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -77,29 +88,29 @@
     <option name="showLibraryContents" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Build LedgerCore.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.ApiApplication.executor": "Run",
-    "Spring Boot.BlockchaincoreApplication.executor": "Run",
-    "Spring Boot.RUN.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/andrejkamanin/Documents/LedgerCore",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build LedgerCore.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ApiApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.BlockchaincoreApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.RUN.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/andrejkamanin/Documents/LedgerCore&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/blockchain" />
@@ -107,17 +118,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.RUN">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="LedgerCore" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="LedgerCore" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
     <configuration name="BlockchaincoreApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="blockchain-api-project.api.main" />
@@ -127,7 +127,7 @@
       </method>
     </configuration>
     <configuration name="RUN" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="blockchain-api-project.api.main" />
+      <module name="LedgerCore.api.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="it.volta.ts.kamaninandrii.blockchaincore.ApiApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -158,10 +158,23 @@
       <workItem from="1737135164502" duration="21000" />
       <workItem from="1737135190986" duration="95000" />
       <workItem from="1737135582035" duration="1055000" />
+      <workItem from="1737155671559" duration="12151000" />
+      <workItem from="1737200020933" duration="5263000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
