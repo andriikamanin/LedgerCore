@@ -16,14 +16,10 @@ public class BlockchainService {
         this.blockchainManager = new BlockchainManager();
     }
 
-
-
     public String createBlock() {
         blockchainManager.createBlock();
-        return "Block created!";
+        return "Block successfully created!";
     }
-
-
 
     public boolean validateBlockchain() {
         return blockchainManager.isBlockchainValid();
@@ -33,50 +29,44 @@ public class BlockchainService {
         return blockchainManager.toString();
     }
 
-
-
-
-
-
-
-    // Метод для вывода баланса
     public String getBalance(String userAddress) {
         User user = blockchainManager.getUser(userAddress);
-        if (user == null) {
-            return "User " + userAddress + " not found!";
-        }
-        return "User balance: " + user.getBalance();
+        return user != null
+                ? "Balance for " + userAddress + ": " + user.getBalance()
+                : "User " + userAddress + " not found.";
     }
 
-    // Метод для создания нового пользователя
     public String createUser(String address) {
-        blockchainManager.createUser(address);  // Используем метод BlockchainManager для создания пользователя
-        return "User " + address + " created!";
-    }
+        if (address == null || address.trim().isEmpty()) {
+            return "Address cannot be empty!";
+        }
 
+        blockchainManager.createUser(address);
+        return "User " + address + " successfully created!";
+    }
 
     public String transfer(String senderAddress, String receiverAddress, double amount) {
         if (amount <= 0) {
-            return "Transfer amount must be greater than zero!";
+            return "Transaction amount must be greater than zero.";
         }
 
         User sender = blockchainManager.getUser(senderAddress);
         if (sender == null) {
-            return "Sender " + senderAddress + " not found!";
+            return "Sender " + senderAddress + " not found.";
         }
 
         User receiver = blockchainManager.getUser(receiverAddress);
         if (receiver == null) {
-            return "Receiver " + receiverAddress + " not found!";
+            return "Receiver " + receiverAddress + " not found.";
         }
 
         if (blockchainManager.getBalanceWithPending(senderAddress) < amount) {
-            return "Insufficient funds for transfer!";
+            return "Insufficient balance for this transaction.";
         }
 
         Transaction transaction = new Transaction(senderAddress, receiverAddress, amount);
-        blockchainManager.addTransaction(transaction); // Используем новый метод добавления
+        blockchainManager.addTransaction(transaction);
 
-        return "Transaction added: " + transaction;
+        return "Transaction successfully added: " + transaction;
     }
 }
