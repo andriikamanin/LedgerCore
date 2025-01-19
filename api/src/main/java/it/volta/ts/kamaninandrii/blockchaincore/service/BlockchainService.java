@@ -3,6 +3,7 @@ package it.volta.ts.kamaninandrii.blockchaincore.service;
 import it.volta.ts.kamaninandrii.blockchain.BlockchainManager;
 import it.volta.ts.kamaninandrii.blockchain.bean.Transaction;
 import it.volta.ts.kamaninandrii.blockchain.bean.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +13,9 @@ public class BlockchainService {
 
     private final BlockchainManager blockchainManager;
 
-    public BlockchainService() {
-        this.blockchainManager = new BlockchainManager();
+    @Autowired
+    public BlockchainService(BlockchainManager blockchainManager) {
+        this.blockchainManager = blockchainManager;
     }
 
     public String createBlock() {

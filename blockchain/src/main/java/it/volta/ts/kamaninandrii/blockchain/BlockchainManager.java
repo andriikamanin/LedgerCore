@@ -14,6 +14,7 @@ public class BlockchainManager {
 
     private final Blockchain blockchain;
     private final List<Transaction> pendingTransactions;
+    private List<Transaction> transactions;
     private final Map<String, User> users;
     private static final int MAX_TRANSACTIONS = 5;
     private static final double MINING_REWARD = 50.0;
@@ -21,10 +22,10 @@ public class BlockchainManager {
     public BlockchainManager() {
         this.blockchain = new Blockchain();
         this.pendingTransactions = new ArrayList<>();
+        this.transactions = new ArrayList<>(); // Инициализация списка
         this.users = new HashMap<>();
         this.users.put("system", new User("system", 100000.0)); // Системный пользователь
     }
-
     public void createUser(String address) {
         if (users.containsKey(address)) {
             System.out.println("Пользователь с таким адресом уже существует.");

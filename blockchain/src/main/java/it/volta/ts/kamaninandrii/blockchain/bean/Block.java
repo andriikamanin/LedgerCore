@@ -30,8 +30,8 @@ public class Block {
     public Block(int index, String previousHash, List<Transaction> transactions) {
         this.index = index;
         this.timestamp = new Date().getTime();
-        this.transactions = transactions != null ? new ArrayList<>(transactions) : new ArrayList<>();
         this.previousHash = previousHash;
+        this.transactions = transactions != null ? new ArrayList<>(transactions) : new ArrayList<>();
         this.hash = calculateHash();
     }
 
@@ -45,6 +45,15 @@ public class Block {
             throw new IllegalArgumentException("Transaction cannot be null.");
         }
         transactions.add(transaction);
+    }
+
+    /**
+     * Gets an unmodifiable list of transactions in the block.
+     *
+     * @return the list of transactions
+     */
+    public List<Transaction> getTransactions() {
+        return new ArrayList<>(transactions); // Возвращаем копию, а не исходный список
     }
 
     /**
@@ -93,14 +102,7 @@ public class Block {
         return previousHash;
     }
 
-    /**
-     * Gets an unmodifiable list of transactions in the block.
-     *
-     * @return the list of transactions
-     */
-    public List<Transaction> getTransactions() {
-        return Collections.unmodifiableList(transactions);
-    }
+
 
     @Override
     public String toString() {
