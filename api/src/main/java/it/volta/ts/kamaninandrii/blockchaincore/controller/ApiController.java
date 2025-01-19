@@ -1,9 +1,12 @@
 package it.volta.ts.kamaninandrii.blockchaincore.controller;
 
+import it.volta.ts.kamaninandrii.blockchain.util.BlockchainParser;
 import it.volta.ts.kamaninandrii.blockchaincore.service.BlockchainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -75,5 +78,12 @@ public class ApiController {
     public ResponseEntity<String> createUser(@RequestBody CreateUserRequest createUserRequest) {
         String response = blockchainService.createUser(createUserRequest.getAddress());
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/transactions")
+    public ResponseEntity<List<BlockchainParser.Transaction>> getTransactions() {
+        String rawBlockchainData = blockchainService.getBlockchain();
+        List<BlockchainParser.Transaction> transactions = BlockchainParser.parseBlockchainData(rawBlockchainData);
+        return ResponseEntity.ok(transactions);
     }
 }
