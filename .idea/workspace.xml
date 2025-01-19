@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa8777d5-83d4-4ffa-8a41-746a79f5246a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/blockchain/src/main/java/it/volta/ts/kamaninandrii/blockchain/BlockchainManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/src/main/java/it/volta/ts/kamaninandrii/blockchain/BlockchainManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,6 +137,7 @@
       <workItem from="1737135582035" duration="1055000" />
       <workItem from="1737155671559" duration="12151000" />
       <workItem from="1737200020933" duration="5576000" />
+      <workItem from="1737286565891" duration="440000" />
     </task>
     <servers />
   </component>

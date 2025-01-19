@@ -5,54 +5,101 @@ import it.volta.ts.kamaninandrii.blockchain.util.HashUtil;
 import java.util.ArrayList;
 import java.util.Date;
 
+
+import java.util.Collections;
+
+import java.util.List;
+
+/**
+ * Represents a block in the blockchain.
+ */
 public class Block {
-    private int index;
-    private long timestamp;
-    private ArrayList<Transaction> transactions;
-    private String previousHash;
+    private final int index;
+    private final long timestamp;
+    private final List<Transaction> transactions;
+    private final String previousHash;
     private String hash;
 
-    // Обновленный конструктор, который принимает список транзакций
-    public Block(int index, String previousHash, ArrayList<Transaction> transactions) {
+    /**
+     * Constructor for Block.
+     *
+     * @param index        the index of the block in the chain
+     * @param previousHash the hash of the previous block
+     * @param transactions the list of transactions to include in the block
+     */
+    public Block(int index, String previousHash, List<Transaction> transactions) {
         this.index = index;
         this.timestamp = new Date().getTime();
-        this.transactions = transactions != null ? transactions : new ArrayList<>();
+        this.transactions = transactions != null ? new ArrayList<>(transactions) : new ArrayList<>();
         this.previousHash = previousHash;
         this.hash = calculateHash();
     }
 
+    /**
+     * Adds a transaction to the block.
+     *
+     * @param transaction the transaction to add
+     */
     public void addTransaction(Transaction transaction) {
-        if (transaction != null) {
-            transactions.add(transaction);
-            System.out.println("Транзакция добавлена в блок: " + transaction);
-        } else {
-            System.out.println("Ошибка: транзакция не может быть null.");
+        if (transaction == null) {
+            throw new IllegalArgumentException("Transaction cannot be null.");
         }
+        transactions.add(transaction);
     }
 
+    /**
+     * Calculates the hash of the block based on its data.
+     *
+     * @return the calculated hash
+     */
     public String calculateHash() {
         String data = index + previousHash + timestamp + transactions.toString();
-        return HashUtil.applySHA256(String.valueOf(256));
+        return HashUtil.applySHA256(data);
     }
 
+    /**
+     * Gets the hash of the block.
+     *
+     * @return the hash of the block
+     */
     public String getHash() {
         return hash;
     }
+
+    /**
+     * Sets the hash of the block.
+     *
+     * @param hash the new hash value
+     */
     public void setHash(String hash) {
         this.hash = hash;
     }
 
-
+    /**
+     * Gets the index of the block.
+     *
+     * @return the index of the block
+     */
     public int getIndex() {
         return index;
     }
 
+    /**
+     * Gets the hash of the previous block.
+     *
+     * @return the hash of the previous block
+     */
     public String getPreviousHash() {
         return previousHash;
     }
 
-    public ArrayList<Transaction> getTransactions() {
-        return transactions;
+    /**
+     * Gets an unmodifiable list of transactions in the block.
+     *
+     * @return the list of transactions
+     */
+    public List<Transaction> getTransactions() {
+        return Collections.unmodifiableList(transactions);
     }
 
     @Override
