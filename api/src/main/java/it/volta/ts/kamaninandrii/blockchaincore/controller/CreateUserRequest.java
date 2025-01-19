@@ -4,9 +4,6 @@ public class CreateUserRequest {
 
     private String address;
 
-
-
-    // Геттеры и сеттеры
     public String getAddress() {
         return address;
     }

@@ -6,7 +6,6 @@ public class TransactionRequest {
     private String receiver;
     private double amount;
 
-    // Конструкторы
     public TransactionRequest() {}
 
     public TransactionRequest(String sender, String receiver, double amount) {
@@ -15,7 +14,6 @@ public class TransactionRequest {
         this.amount = amount;
     }
 
-    // Геттеры и сеттеры
     public String getSender() {
         return sender;
     }

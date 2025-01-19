@@ -1,9 +1,10 @@
 package it.volta.ts.kamaninandrii.blockchaincore.controller;
+
 public class DepositRequest {
+
     private String user;
     private double amount;
 
-    // геттеры и сеттеры
     public String getUser() {
         return user;
     }
