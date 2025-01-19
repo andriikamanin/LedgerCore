@@ -5,25 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa8777d5-83d4-4ffa-8a41-746a79f5246a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/it/volta/ts/kamaninandrii/blockchaincore/controller/ApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/it/volta/ts/kamaninandrii/blockchaincore/controller/ApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/build/classes/java/main/it/volta/ts/kamaninandrii/blockchain/contracts/SimpleContract.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/build/classes/java/main/it/volta/ts/kamaninandrii/blockchain/contracts/SmartContract.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/build/libs/blockchain-0.0.1-SNAPSHOT-plain.jar" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/build/libs/blockchain-0.0.1-SNAPSHOT-plain.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/build/libs/blockchain-1.0-SNAPSHOT-plain.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/build/libs/blockchain-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/build/tmp/compileJava/compileTransaction/stash-dir/Block.class.uniqueId3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/build/tmp/compileJava/compileTransaction/stash-dir/Blockchain$1.class.uniqueId1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/build/tmp/compileJava/compileTransaction/stash-dir/Blockchain.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/build/tmp/compileJava/compileTransaction/stash-dir/BlockchainManager.class.uniqueId2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain-frontend" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain-frontend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain-frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain-frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain-frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain-frontend/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain-frontend/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain-frontend/vue.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +142,7 @@
       <workItem from="1737155671559" duration="12151000" />
       <workItem from="1737200020933" duration="5576000" />
       <workItem from="1737286565891" duration="2787000" />
+      <workItem from="1737300212988" duration="5108000" />
     </task>
     <servers />
   </component>
