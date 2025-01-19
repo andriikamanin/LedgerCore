@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:8081")
 public class ApiController {
 
     @Autowired
@@ -68,7 +69,7 @@ public class ApiController {
         );
 
         return ResponseEntity.ok(response);
-    }
+    } //346
 
     @PostMapping("/createUser")
     public ResponseEntity<String> createUser(@RequestBody CreateUserRequest createUserRequest) {
