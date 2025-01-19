@@ -17,54 +17,62 @@ public class ApiController {
         return ResponseEntity.ok("Service is running");
     }
 
-    // Изменяем на @RequestBody для передачи транзакции в JSON
     @PostMapping("/transaction")
-    public String addTransaction(@RequestBody TransactionRequest transactionRequest) {
-        return blockchainService.transfer(
+    public ResponseEntity<String> addTransaction(@RequestBody TransactionRequest transactionRequest) {
+        if (transactionRequest.getAmount() <= 0) {
+            return ResponseEntity.badRequest().body("Amount must be greater than zero.");
+        }
+
+        String response = blockchainService.transfer(
                 transactionRequest.getSender(),
                 transactionRequest.getReceiver(),
                 transactionRequest.getAmount()
         );
+
+        return ResponseEntity.ok(response);
     }
 
-    // Создание блока
     @PostMapping("/block")
-    public String createBlock() {
-        return blockchainService.createBlock();
+    public ResponseEntity<String> createBlock() {
+        String response = blockchainService.createBlock();
+        return ResponseEntity.ok(response);
     }
 
-    // Получение баланса пользователя
     @GetMapping("/balance")
-    public String getBalance(@RequestParam String user) {
-        return "Balance of " + user + ": " + blockchainService.getBalance(user);
+    public ResponseEntity<String> getBalance(@RequestParam String user) {
+        String response = blockchainService.getBalance(user);
+        return ResponseEntity.ok(response);
     }
 
-    // Проверка валидности блокчейна
     @GetMapping("/validate")
-    public String validateBlockchain() {
-        return blockchainService.validateBlockchain() ? "Blockchain is valid." : "Blockchain is invalid!";
+    public ResponseEntity<String> validateBlockchain() {
+        boolean isValid = blockchainService.validateBlockchain();
+        return ResponseEntity.ok(isValid ? "Blockchain is valid." : "Blockchain is invalid!");
     }
 
-    // Получение состояния блокчейна
     @GetMapping("/chain")
-    public String getBlockchain() {
-        return blockchainService.getBlockchain();
+    public ResponseEntity<String> getBlockchain() {
+        return ResponseEntity.ok(blockchainService.getBlockchain());
     }
 
-    // Пополнение баланса
     @PostMapping("/deposit")
-    public String deposit(@RequestBody TransactionRequest transactionRequest) {
-        return blockchainService.transfer(
+    public ResponseEntity<String> deposit(@RequestBody TransactionRequest transactionRequest) {
+        if (transactionRequest.getAmount() <= 0) {
+            return ResponseEntity.badRequest().body("Deposit amount must be greater than zero.");
+        }
+
+        String response = blockchainService.transfer(
                 transactionRequest.getSender(),
                 transactionRequest.getReceiver(),
                 transactionRequest.getAmount()
         );
+
+        return ResponseEntity.ok(response);
     }
 
-    // Создание нового пользователя
     @PostMapping("/createUser")
-    public String createUser(@RequestBody CreateUserRequest createUserRequest) {
-        blockchainService.createUser(createUserRequest.getAddress());
-        return "User " + createUserRequest.getAddress() + " created!";
+    public ResponseEntity<String> createUser(@RequestBody CreateUserRequest createUserRequest) {
+        String response = blockchainService.createUser(createUserRequest.getAddress());
+        return ResponseEntity.ok(response);
     }
 }
