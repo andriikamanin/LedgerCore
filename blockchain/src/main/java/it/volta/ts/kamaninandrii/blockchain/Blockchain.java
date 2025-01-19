@@ -4,29 +4,29 @@ import it.volta.ts.kamaninandrii.blockchain.bean.Block;
 import it.volta.ts.kamaninandrii.blockchain.bean.Transaction;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Blockchain {
 
-    private ArrayList<Block> chain;
-    private ArrayList<Transaction> pendingTransactions;
-    private double miningReward = 50.0;  // Вознаграждение майнеру
-    private static final int MAX_TRANSACTIONS = 5;  // Создавать блок после 5 транзакций
+    private final List<Block> chain;
+    private final List<Transaction> pendingTransactions;
+    private final double miningReward; // Вознаграждение майнеру
+    private static final int MAX_TRANSACTIONS = 5; // Создавать блок после 5 транзакций
 
     public Blockchain() {
-        chain = new ArrayList<>();
-        pendingTransactions = new ArrayList<>();
-        // Создаем генезис-блок
+        this.chain = new ArrayList<>();
+        this.pendingTransactions = new ArrayList<>();
+        this.miningReward = 50.0; // Установленное вознаграждение
+        // Генезис-блок
         chain.add(new Block(0, "0", new ArrayList<>()));
     }
 
-    // Метод для старта автоматического майнинга блоков
+    // Запуск автоматического майнинга
     public void startAutoMine() {
-        System.out.println("Starting auto-mine ");
-
-        // Периодическая проверка на наличие транзакций в пуле
-        Timer timer = new Timer(true);
+        System.out.println("Запуск автоматического майнинга...");
+        Timer timer = new Timer(true); // Фоновый процесс
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
@@ -34,33 +34,29 @@ public class Blockchain {
                     mineBlock();
                 }
             }
-        }, 0, 1000);  // Проверка каждые 1 секунду
+        }, 0, 1000); // Проверка каждые 1 секунду
     }
 
-    // Метод для создания блока с транзакциями
+    // Создание нового блока
     public void mineBlock() {
         if (pendingTransactions.size() < MAX_TRANSACTIONS) {
-            return; // Если недостаточно транзакций, блок не создаем
+            return; // Недостаточно транзакций для создания блока
         }
 
         Block lastBlock = getLastBlock();
-        ArrayList<Transaction> transactionsToAdd = new ArrayList<>();
+        List<Transaction> transactionsToAdd = new ArrayList<>(pendingTransactions.subList(0, MAX_TRANSACTIONS));
 
-        // Берем первые MAX_TRANSACTIONS транзакций из пула
-        for (int i = 0; i < MAX_TRANSACTIONS; i++) {
-            transactionsToAdd.add(pendingTransactions.remove(0));
-        }
+        // Удаляем транзакции из пула
+        pendingTransactions.subList(0, MAX_TRANSACTIONS).clear();
 
-        // Добавляем транзакцию майнинга (вознаграждение)
+        // Добавляем транзакцию с вознаграждением
         transactionsToAdd.add(new Transaction("system", "miner", miningReward));
 
-        // Создаем новый блок с этими транзакциями
+        // Создаем новый блок
         Block newBlock = new Block(lastBlock.getIndex() + 1, lastBlock.getHash(), transactionsToAdd);
-
-        // Добавляем новый блок в цепь
         addBlock(newBlock);
 
-        System.out.println("Новый блок создан: " + newBlock);
+        System.out.println("Создан новый блок: " + newBlock);
     }
 
     // Получить последний блок
@@ -75,26 +71,29 @@ public class Blockchain {
 
     // Добавить транзакцию в пул
     public void addTransaction(String sender, String receiver, double amount) {
+        if (sender == null || receiver == null || amount <= 0) {
+            throw new IllegalArgumentException("Неверные данные транзакции");
+        }
         Transaction transaction = new Transaction(sender, receiver, amount);
         pendingTransactions.add(transaction);
-        System.out.println("Транзакция добавлена в пул: " + transaction);
+        System.out.println("Транзакция добавлена: " + transaction);
     }
 
-    // Информация о блоках
+    // Получить информацию о всей цепочке блоков
     public String getBlockchainInfo() {
-        StringBuilder blockchainInfo = new StringBuilder();
+        StringBuilder info = new StringBuilder();
         for (Block block : chain) {
-            blockchainInfo.append(block).append("\n");
+            info.append(block).append("\n");
         }
-        return blockchainInfo.toString();
+        return info.toString();
     }
 
-    public ArrayList<Block> getChain() {
-        return chain;
+    public List<Block> getChain() {
+        return new ArrayList<>(chain); // Возвращаем копию для безопасности
     }
 
-    public ArrayList<Transaction> getPendingTransactions() {
-        return pendingTransactions;
+    public List<Transaction> getPendingTransactions() {
+        return new ArrayList<>(pendingTransactions); // Возвращаем копию для безопасности
     }
 
     // Проверка валидности цепочки блоков
@@ -103,14 +102,12 @@ public class Blockchain {
             Block current = chain.get(i);
             Block previous = chain.get(i - 1);
 
-            // Проверка текущего хеша
             if (!current.getHash().equals(current.calculateHash())) {
-                return false;
+                return false; // Хеш текущего блока не совпадает
             }
 
-            // Проверка предыдущего хеша
             if (!current.getPreviousHash().equals(previous.getHash())) {
-                return false;
+                return false; // Хеш предыдущего блока не совпадает
             }
         }
         return true;
