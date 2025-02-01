@@ -1,4 +1,4 @@
-package it.volta.ts.kamaninandrii.blockchaincore.controller;
+package it.volta.ts.kamaninandrii.blockchaincore.requests;
 
 public class CreateUserRequest {
 

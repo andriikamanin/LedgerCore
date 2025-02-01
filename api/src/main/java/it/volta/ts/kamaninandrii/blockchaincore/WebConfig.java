@@ -12,9 +12,9 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // Разрешить запросы на все эндпоинты
                 .allowedOrigins("*") // Разрешить запросы с любого IP/домена
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Указать разрешенные HTTP методы
-                .allowedHeaders("*") // Разрешить любые заголовки
-                .allowCredentials(false) // Без учетных данных
-                .maxAge(3600); // Кешировать preflight запросы на 1 час
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("*")
+                .allowCredentials(false)
+                .maxAge(3600);
     }
 }

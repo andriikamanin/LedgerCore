@@ -12,14 +12,6 @@ public class ApiApplication {
         SpringApplication.run(ApiApplication.class, args);
         Blockchain blockchain = new Blockchain();
 
-        // Запуск автоматического майнинга
-        blockchain.startAutoMine();
-
-        // Добавление транзакций (в пул)
-        blockchain.addTransaction("system", "user25", 200.0);
-        blockchain.addTransaction("system", "user25", 300.0);
-        blockchain.addTransaction("system", "user25", 150.0);
-        blockchain.addTransaction("system", "user25", 100.0);
-        blockchain.addTransaction("system", "user25", 50.0);
+        System.out.println("API IS RUNNING");
     }
 }

@@ -1,6 +1,8 @@
 package it.volta.ts.kamaninandrii.blockchaincore.controller;
 
 import it.volta.ts.kamaninandrii.blockchain.util.BlockchainParser;
+import it.volta.ts.kamaninandrii.blockchaincore.requests.CreateUserRequest;
+import it.volta.ts.kamaninandrii.blockchaincore.requests.TransactionRequest;
 import it.volta.ts.kamaninandrii.blockchaincore.service.BlockchainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
