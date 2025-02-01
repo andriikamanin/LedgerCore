@@ -3,6 +3,8 @@ package it.volta.ts.kamaninandrii.blockchaincore.service;
 import it.volta.ts.kamaninandrii.blockchain.BlockchainManager;
 import it.volta.ts.kamaninandrii.blockchain.bean.Transaction;
 import it.volta.ts.kamaninandrii.blockchain.bean.User;
+
+import it.volta.ts.kamaninandrii.peertopeer.P2PManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -12,14 +14,17 @@ import org.springframework.stereotype.Service;
 public class BlockchainService {
 
     private final BlockchainManager blockchainManager;
-
+    private final P2PManager p2PManager;
     @Autowired
-    public BlockchainService(BlockchainManager blockchainManager) {
+    public BlockchainService(BlockchainManager blockchainManager, P2PManager p2PManager) {
         this.blockchainManager = blockchainManager;
+        this.p2PManager = p2PManager;
     }
 
     public String createBlock() {
         blockchainManager.createBlock();
+        String blockData = blockchainManager.toString();  // Получаем данные блока
+        p2PManager.broadcastBlock(blockData);  // Отправляем блок в P2P-сеть
         return "Block successfully created!";
     }
 

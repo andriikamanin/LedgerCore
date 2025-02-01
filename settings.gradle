@@ -1,5 +1,5 @@
 
 rootProject.name = 'LedgerCore'
 
-include 'api', 'blockchain'
+include 'api', 'blockchain', 'peer-to-peer'
 

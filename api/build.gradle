@@ -18,14 +18,19 @@ repositories {
 }
 
 dependencies {
+	// Основные стартеры Spring Boot
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-web-services'
-	//developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation 'org.springframework.boot:spring-boot-starter'
+
+	// Тестирование
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation project(':blockchain')
+
+	// Зависимости на другие модули
+	implementation project(':blockchain')  // Модуль блокчейна
+	implementation project(':peer-to-peer')  // Модуль P2P
+
 }
 
 tasks.named('test') {
