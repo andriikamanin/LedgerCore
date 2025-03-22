@@ -4,7 +4,6 @@ import it.volta.ts.kamaninandrii.blockchain.util.BlockchainParser;
 import it.volta.ts.kamaninandrii.blockchaincore.requests.CreateUserRequest;
 import it.volta.ts.kamaninandrii.blockchaincore.requests.TransactionRequest;
 import it.volta.ts.kamaninandrii.blockchaincore.service.BlockchainService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,8 +14,11 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:8081")
 public class ApiController {
 
-    @Autowired
-    private BlockchainService blockchainService;
+    private final BlockchainService blockchainService;
+
+    public ApiController(BlockchainService blockchainService) {
+        this.blockchainService = blockchainService;
+    }
 
     @GetMapping("/status")
     public ResponseEntity<String> getStatus() {
@@ -63,18 +65,8 @@ public class ApiController {
 
     @PostMapping("/deposit")
     public ResponseEntity<String> deposit(@RequestBody TransactionRequest transactionRequest) {
-        if (transactionRequest.getAmount() <= 0) {
-            return ResponseEntity.badRequest().body("Deposit amount must be greater than zero.");
-        }
-
-        String response = blockchainService.transfer(
-                transactionRequest.getSender(),
-                transactionRequest.getReceiver(),
-                transactionRequest.getAmount()
-        );
-
-        return ResponseEntity.ok(response);
-    } //346
+        return addTransaction(transactionRequest);
+    }
 
     @PostMapping("/createUser")
     public ResponseEntity<String> createUser(@RequestBody CreateUserRequest createUserRequest) {

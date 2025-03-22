@@ -13,5 +13,6 @@ public class ApiApplication {
         Blockchain blockchain = new Blockchain();
 
         System.out.println("API IS RUNNING");
+
     }
 }

@@ -5,31 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa8777d5-83d4-4ffa-8a41-746a79f5246a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/peer-to-peer/src/main/java/it/volta/ts/kamaninandrii/peertopeer/P2PManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/peer-to-peer/src/main/java/it/volta/ts/kamaninandrii/peertopeer/WebSocketService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/peer-to-peer/src/main/java/it/volta/ts/kamaninandrii/peertopeer/config/P2PConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/peer-to-peer/src/main/java/it/volta/ts/kamaninandrii/peertopeer/config/WebSocketConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/peer-to-peer/src/main/java/it/volta/ts/kamaninandrii/peertopeer/network/P2PController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/peer-to-peer/src/main/java/it/volta/ts/kamaninandrii/peertopeer/network/P2PWebSocketHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/peer-to-peer/src/main/java/it/volta/ts/kamaninandrii/peertopeer/network/PeerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/api/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/it/volta/ts/kamaninandrii/blockchaincore/ApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/it/volta/ts/kamaninandrii/blockchaincore/ApiApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/it/volta/ts/kamaninandrii/blockchaincore/service/BlockchainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/it/volta/ts/kamaninandrii/blockchaincore/service/BlockchainService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/peer-to-peer/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/peer-to-peer/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/it/volta/ts/kamaninandrii/blockchaincore/controller/ApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/it/volta/ts/kamaninandrii/blockchaincore/controller/ApiController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +49,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;andriikamanin&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/andriikamanin/LedgerCore.git&quot;,
+    &quot;accountId&quot;: &quot;1793860d-46cc-4226-85a2-3b16689c48df&quot;
+  }
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -116,6 +106,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -181,6 +172,9 @@
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="StructureViewState">
+    <option name="selectedTab" value="Logical" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="fa8777d5-83d4-4ffa-8a41-746a79f5246a" name="Changes" comment="" />
@@ -202,6 +196,9 @@
       <workItem from="1737562778717" duration="1761000" />
       <workItem from="1737734626772" duration="21000" />
       <workItem from="1738413762650" duration="4154000" />
+      <workItem from="1738435561241" duration="117000" />
+      <workItem from="1738435686567" duration="189000" />
+      <workItem from="1738435884302" duration="1386000" />
     </task>
     <servers />
   </component>
